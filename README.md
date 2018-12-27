@@ -5,7 +5,7 @@ This project contains program that has 5 or more of OWASP top 10 securify flaws,
 
 TODO:  
 
-Issue:  
+Issue: A1:2017 Injection  
 Steps to reproduce:  
 1.  
 2.  
@@ -13,7 +13,7 @@ Steps to reproduce:
 4.  
 How to fix:  
 
-Issue:  
+Issue: A2:2017 Broken Authentication  
 Steps to reproduce:  
 1.  
 2.  
@@ -21,7 +21,7 @@ Steps to reproduce:
 4.  
 How to fix:  
 
-Issue:  
+Issue: A5:2017 Broken Access Control  
 Steps to reproduce:  
 1.  
 2.  
@@ -29,7 +29,7 @@ Steps to reproduce:
 4.  
 How to fix:  
 
-Issue:  
+Issue: A7:2017 Cross-Site Scripting (XSS)  
 Steps to reproduce:  
 1.  
 2.  
@@ -37,7 +37,7 @@ Steps to reproduce:
 4.  
 How to fix:  
 
-Issue:  
+Issue: A10:2017 Insufficient Logging  
 Steps to reproduce:  
 1.  
 2.  

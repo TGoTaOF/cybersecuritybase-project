@@ -36,27 +36,27 @@ Application does not have a way to register as user, as this application is just
 
 **Source Packages:**
 
-	**sec.project**
+	sec.project:
 	CyberSecurityBaseProjectApplication.java  :Main class, starts application.  
 
 
-	**sec.project.config**
+	sec.project.config:
 	CustomUserDetailsService.java  :Contains init for already existing accounts and messages.  
 	SecurityConfiguration.java  :Some security.  
 	  
 
-	**sec.project.controller**
+	sec.project.controller:
 	AccountController.java  : Http address controller for pages that users can access.  
 	AdminController.java  :Http address controller for admin pages.  
 	ProductionController.java  :Http address controller for simulated production server.  
 
 
-	**sec.project.domain**
+	sec.project.domain:
 	Account.java  :Users account class for database.  
 	Message.java  :Class for messages for database.  
 
 
-	**sec.project.repository**
+	sec.project.repository:
 	AccountRepository.java  :Class "skeleton" for database with accounts in it.  
 	MessageRepository.java  :Class "skeleton" for database with messages in it.  
 

@@ -83,7 +83,7 @@ Application does not have a way to register as user, as this application is just
 	**8.** Now press "Start Fuzzer". We can see that the web application allows unlimited tries for the login.  
 	**9.** Also in the results of the fuzz, at the try with "qwerty", we see that we did not get error(localhost:8080/login?error) as location in response window/tab, meaning we found the password.  
 
-### **How to fix:** This needs to be fixed by limiting how many times one user can try to login to the system as well as how often login attemps can be made(for example one try every second). This can be made by implementing a limit to tries or enabling some third party automated credential stuffing protection(from java, spring etc.). Other thing that could be done is password control for allowed passwords. System should not allow user to use weak and well-known passwords such as "qwerty". Good way would be to require the password to have small and big alphabets as well as atleast one number and one special letter.  
+**How to fix:** This needs to be fixed by limiting how many times one user can try to login to the system as well as how often login attemps can be made(for example one try every second). This can be made by implementing a limit to tries or enabling some third party automated credential stuffing protection(from java, spring etc.). Other thing that could be done is password control for allowed passwords. System should not allow user to use weak and well-known passwords such as "qwerty". Good way would be to require the password to have small and big alphabets as well as atleast one number and one special letter.  
 
 ## **Issue: A5:2017 Broken Access Control**  
 	**Steps to reproduce:**  
@@ -94,7 +94,7 @@ Application does not have a way to register as user, as this application is just
 	**4.** When logged in change url of the site in browser to "localhost:8080/admin". Press enter.
 	**5.** We see that we got to the applications admin page without any kind of authentication.  
 
-### **How to fix:** Admin page should make sure only admin users can access it. This can be done for example by checking admin rights in "AdminController.java", where mapping for that url is done, and redirect user to different page if user doesn't have admin rights. Other possible implementation would be in "SecurityConfiguration.java" with the HttpSecurity object.  
+**How to fix:** Admin page should make sure only admin users can access it. This can be done for example by checking admin rights in "AdminController.java", where mapping for that url is done, and redirect user to different page if user doesn't have admin rights. Other possible implementation would be in "SecurityConfiguration.java" with the HttpSecurity object.  
 
 ## **Issue: A6:2017 Security Misconfiguration**  
 	**Steps to reproduce:**  
@@ -107,7 +107,7 @@ Application does not have a way to register as user, as this application is just
 	**3.** Let's try using the admin accounts username and password that we found in the production server. Enter "admin" as username and "admin" as password. Press login.  
 	**4.** We are now logged in as administerator.   
 
-### **How to fix:** This was caused by live applications security not configured at all as far as admin account goes, and so the password and username for the admin were default ones. This is to be fixed by changing the admin username and password in the live version of the application. Also outsiders should not have access to developer teams notes, so should take better care of any notes with usernames and accounts too.   
+**How to fix:** This was caused by live applications security not configured at all as far as admin account goes, and so the password and username for the admin were default ones. This is to be fixed by changing the admin username and password in the live version of the application. Also outsiders should not have access to developer teams notes, so should take better care of any notes with usernames and accounts too.   
 
 ## **Issue: A7:2017 Cross-Site Scripting (XSS)**  
 	**Steps to reproduce:**  
@@ -118,7 +118,7 @@ Application does not have a way to register as user, as this application is just
 	**4.** Enter "<script language="javascript" type="text/javascript">alert("Ha Ha Ha");</script>" to the message field and press "Add".  
 	**5.** Pop-up message will be shown. This means site can be used to execute scripts, and is vulnerable to XSS.  
 
-### **How to fix:** All texts should be escaped, in daatbases and in the html. In this project using th:text in the user.html whenever we are printing text would do the trick.  
+**How to fix:** All texts should be escaped, in daatbases and in the html. In this project using th:text in the user.html whenever we are printing text would do the trick.  
 
 ## **Issue: A10:2017 Insufficient Logging**  
 	**Steps to reproduce:**  
@@ -132,4 +132,4 @@ Application does not have a way to register as user, as this application is just
 	**6.B.** Or if running jar on commandline/terminal, read the output log, it has nothing about deleting an account.  
 	**7.** No log files were also made, so: We successfully deleted some other person's account without leaving any evidence.
 
-### **How to fix:** Application needs better logging and monitoring. Everytime something modifies databases, it should be logged in someway so that recovery is possible.  
+**How to fix:** Application needs better logging and monitoring. Everytime something modifies databases, it should be logged in someway so that recovery is possible.  

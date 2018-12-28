@@ -7,14 +7,16 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 public class Message extends AbstractPersistable<Long> {
 
     private String message;
+    private String user;
 
     public Message() {
         super();
     }
 
-    public Message(String message) {
+    public Message(String message, String user) {
         this();
         this.message = message;
+        this.user = user;
     }
 
     public String getMessage() {
@@ -23,6 +25,14 @@ public class Message extends AbstractPersistable<Long> {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+    
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
 }

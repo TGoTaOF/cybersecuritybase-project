@@ -23,6 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // no real security at the moment
         http.csrf().disable();
         http.authorizeRequests()
+                .antMatchers("/production").permitAll()
                 .anyRequest().authenticated();
         http.formLogin()
                 .permitAll();

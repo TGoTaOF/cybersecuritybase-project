@@ -8,24 +8,26 @@
         
         <p></p>
         
-        <h1>Add a message</h1>
+        <h3>Last 5 messages:</h3>
+        
+        <table>
+            <tbody>
+                <tr th:each="message, iterStat :${messages}" th:if="${iterStat.index >= iterStat.size-5}">
+                    <td th:text="${message.user}">user</td>
+                    <td th:text="':     '"></td>
+                    <td th:utext="${message.message}">message</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p></p>
+        
+        <h1>Post a message for others to see:</h1>
 
         <form action="#" th:action="@{/form}" method="POST">
             <p><label for="message">Message</label>: <input type="text" name="message" id="message"/></p>
             <p><input type="submit" value="Add" /></p>
         </form>
-        
-        <p></p>
-        
-        <h3>Your messages:</h3>
-        
-        <table>
-            <tbody>
-                <tr th:each="message : ${messages}">
-                    <td th:utext="${message.message}">message</td>
-                </tr>
-            </tbody>
-        </table>
         
     </body>
 </html>

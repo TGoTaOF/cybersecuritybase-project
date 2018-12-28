@@ -4,7 +4,11 @@
         <title>Admin page</title>
     </head>
     <body>
-        <h2>Admin page to see all users and delete users.</h2>
+        <button onclick="window.location.href = '/logout';">logout</button>
+        
+        <p></p>
+        
+        <h2>Admin page to see last 20 messages, all users and possibility to delete users.</h2>
         
         <p></p>
         
@@ -18,7 +22,23 @@
                 </div>
                 <p></p>
             </li>
-        
         </ul>
+        
+        <p></p>
+        
+        <h3>Last 20 messages:</h3>
+        
+        <p></p>
+        
+        <table>
+            <tbody>
+                <tr th:each="message, iterStat :${messages}" th:if="${iterStat.index >= iterStat.size-20}">
+                    <td th:text="${message.user}">user</td>
+                    <td th:text="':     '"></td>
+                    <td th:utext="${message.message}">message</td>
+                </tr>
+            </tbody>
+        </table>
+        
     </body>
 </html>

@@ -10,14 +10,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import sec.project.domain.Account;
+import sec.project.domain.Message;
 import sec.project.repository.AccountRepository;
+import sec.project.repository.MessageRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
     
     @Autowired
     private AccountRepository accountRepository;
-
+    
+    @Autowired
+    private MessageRepository messageRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -46,8 +50,23 @@ public class CustomUserDetailsService implements UserDetailsService {
         
         account = new Account();
         account.setUsername("admin");
-        account.setPassword(passwordEncoder.encode("adminpassword"));
+        account.setPassword(passwordEncoder.encode("admin"));
         accountRepository.save(account);
+        
+        Message message = new Message();
+        message.setUser("User1");
+        message.setMessage("Hello!");
+        messageRepository.save(message);
+        
+        message = new Message();
+        message.setUser("User2");
+        message.setMessage("Bon jour!");
+        messageRepository.save(message);
+        
+        message = new Message();
+        message.setUser("admin");
+        message.setMessage("Gutten dag!");
+        messageRepository.save(message);
     }
 
     @Override

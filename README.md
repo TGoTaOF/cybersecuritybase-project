@@ -72,7 +72,7 @@ Application does not have a way to register as user, as this application is just
 
 ##
 
-# Flaws (A2, A5, A6, A7 ,A10 from [Top 10 flaws](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)):
+# Flaws (A2, A5, A6, A7 and A10, from OWASP [Top 10 flaws](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)):
 
 ## **Issue: A2:2017 Broken Authentication**  
 	**Steps to reproduce:**  
@@ -109,8 +109,8 @@ Application does not have a way to register as user, as this application is just
 	**3.** We got in to applications old test server that contains information of what usernames and passwords were used during testing. For administerator username seems to be "admin" and password "admin".
 	**4.** Now to go back to the live application, go to address "localhost:8080/login" in browser.  
 	(here 8080 may again need to be replaced with port where the application is running).  
-	**3.** Let's try using the admin accounts username and password that we found in the production server. Enter "admin" as username and "admin" as password. Press login.  
-	**4.** We are now logged in as administerator.   
+	**5.** Let's try using the admin accounts username and password that we found in the production server. Enter "admin" as username and "admin" as password. Press login.  
+	**6.** We are now logged in as administerator.   
 
 **How to fix:** This was caused by live applications security not configured at all as far as admin account goes, and so the password and username for the admin were default ones. This is to be fixed by changing the admin username and password in the live version of the application. Also outsiders should not have access to developer teams notes, so should take better care of any notes with usernames and accounts too.   
 

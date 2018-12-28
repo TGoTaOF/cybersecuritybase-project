@@ -5,7 +5,7 @@ This project contains program that has 5 of OWASP's top 10 securify flaws, repor
 
 ## 
 
-## Project description:
+# Project description:
 This project is a web application that lets users send messages and also read messages send by other users.  
 
 Application is very simple and it only allows users to send messages to general chat where everyone can read send messages.  
@@ -18,21 +18,21 @@ Application does not have a way to register as user, as this application is just
 
 ##
 
-## Project's webside structure:  
-	**"/login"**  :Login page.  
+# Project's webside structure:  
+**"/login"**  :Login page.  
 
 
-	**"/user/{username}"**  :Currently logged in user's page for reading last 5 messages and sending new messages.  
+**"/user/{username}"**  :Currently logged in user's page for reading last 5 messages and sending new messages.  
 
 
-	**"/admin"**  :admin page to delete users and see 20 last messages.  
+**"/admin"**  :admin page to delete users and see 20 last messages.  
 
 
-	**"/production"**  :This page simulates a note to devs on a production test server for my report of flaw "A6:2017 Security Misconfiguration"  
+**"/production"**  :This page simulates a note to devs on a production test server for my report of flaw "A6:2017 Security Misconfiguration"  
 
 ##
 
-## Project's source code structure:
+# Project's source code structure:
 
 **Source Package:**
 
@@ -67,9 +67,9 @@ Application does not have a way to register as user, as this application is just
 
 ##
 
-## Flaws (A2, A5, A6, A7 ,A10 from [Top 10 flaws](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)):
+# Flaws (A2, A5, A6, A7 ,A10 from [Top 10 flaws](https://www.owasp.org/images/7/72/OWASP_Top_10-2017_%28en%29.pdf.pdf)):
 
-### **Issue: A2:2017 Broken Authentication**  
+## **Issue: A2:2017 Broken Authentication**  
 	**Steps to reproduce:**  
 	**1.** Start/restart the web application.  
 	**2.** go to address "localhost:8080" in browser.  
@@ -83,9 +83,9 @@ Application does not have a way to register as user, as this application is just
 	**8.** Now press "Start Fuzzer". We can see that the web application allows unlimited tries for the login.  
 	**9.** Also in the results of the fuzz, at the try with "qwerty", we see that we did not get error(localhost:8080/login?error) as location in response window/tab, meaning we found the password.  
 
-	**How to fix:** This needs to be fixed by limiting how many times one user can try to login to the system as well as how often login attemps can be made(for example one try every second). This can be made by implementing a limit to tries or enabling some third party automated credential stuffing protection(from java, spring etc.). Other thing that could be done is password control for allowed passwords. System should not allow user to use weak and well-known passwords such as "qwerty". Good way would be to require the password to have small and big alphabets as well as atleast one number and one special letter.  
+### **How to fix:** This needs to be fixed by limiting how many times one user can try to login to the system as well as how often login attemps can be made(for example one try every second). This can be made by implementing a limit to tries or enabling some third party automated credential stuffing protection(from java, spring etc.). Other thing that could be done is password control for allowed passwords. System should not allow user to use weak and well-known passwords such as "qwerty". Good way would be to require the password to have small and big alphabets as well as atleast one number and one special letter.  
 
-### **Issue: A5:2017 Broken Access Control**  
+## **Issue: A5:2017 Broken Access Control**  
 	**Steps to reproduce:**  
 	**1.** Start/restart the web application.  
 	**2.** go to address "localhost:8080" in browser.  
@@ -94,9 +94,9 @@ Application does not have a way to register as user, as this application is just
 	**4.** When logged in change url of the site in browser to "localhost:8080/admin". Press enter.
 	**5.** We see that we got to the applications admin page without any kind of authentication.  
 
-	**How to fix:** Admin page should make sure only admin users can access it. This can be done for example by checking admin rights in "AdminController.java", where mapping for that url is done, and redirect user to different page if user doesn't have admin rights. Other possible implementation would be in "SecurityConfiguration.java" with the HttpSecurity object.  
+### **How to fix:** Admin page should make sure only admin users can access it. This can be done for example by checking admin rights in "AdminController.java", where mapping for that url is done, and redirect user to different page if user doesn't have admin rights. Other possible implementation would be in "SecurityConfiguration.java" with the HttpSecurity object.  
 
-### **Issue: A6:2017 Security Misconfiguration**  
+## **Issue: A6:2017 Security Misconfiguration**  
 	**Steps to reproduce:**  
 	**1.** Start/restart the web application.  
 	**2.** go to address "localhost:8080/production" in browser.  
@@ -107,9 +107,9 @@ Application does not have a way to register as user, as this application is just
 	**3.** Let's try using the admin accounts username and password that we found in the production server. Enter "admin" as username and "admin" as password. Press login.  
 	**4.** We are now logged in as administerator.   
 
-	**How to fix:** This was caused by live applications security not configured at all as far as admin account goes, and so the password and username for the admin were default ones. This is to be fixed by changing the admin username and password in the live version of the application. Also outsiders should not have access to developer teams notes, so should take better care of any notes with usernames and accounts too.   
+### **How to fix:** This was caused by live applications security not configured at all as far as admin account goes, and so the password and username for the admin were default ones. This is to be fixed by changing the admin username and password in the live version of the application. Also outsiders should not have access to developer teams notes, so should take better care of any notes with usernames and accounts too.   
 
-### **Issue: A7:2017 Cross-Site Scripting (XSS)**  
+## **Issue: A7:2017 Cross-Site Scripting (XSS)**  
 	**Steps to reproduce:**  
 	**1.** Start/restart the web application.  
 	**2.** go to address "localhost:8080" in browser.  
@@ -118,9 +118,9 @@ Application does not have a way to register as user, as this application is just
 	**4.** Enter "<script language="javascript" type="text/javascript">alert("Ha Ha Ha");</script>" to the message field and press "Add".  
 	**5.** Pop-up message will be shown. This means site can be used to execute scripts, and is vulnerable to XSS.  
 
-	**How to fix:** All texts should be escaped, in daatbases and in the html. In this project using th:text in the user.html whenever we are printing text would do the trick.  
+### **How to fix:** All texts should be escaped, in daatbases and in the html. In this project using th:text in the user.html whenever we are printing text would do the trick.  
 
-### **Issue: A10:2017 Insufficient Logging**  
+## **Issue: A10:2017 Insufficient Logging**  
 	**Steps to reproduce:**  
 	**1.** Start/restart the web application.  
 	**2.** go to address "localhost:8080" in browser.  
@@ -132,4 +132,4 @@ Application does not have a way to register as user, as this application is just
 	**6.B.** Or if running jar on commandline/terminal, read the output log, it has nothing about deleting an account.  
 	**7.** No log files were also made, so: We successfully deleted some other person's account without leaving any evidence.
 
-	**How to fix:** Application needs better logging and monitoring. Everytime something modifies databases, it should be logged in someway so that recovery is possible.  
+### **How to fix:** Application needs better logging and monitoring. Everytime something modifies databases, it should be logged in someway so that recovery is possible.  
